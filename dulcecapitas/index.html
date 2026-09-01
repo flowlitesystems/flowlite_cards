@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlocked Cards</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(180deg, #0a192f 0%, #030814 100%);
+      --card-bg: rgba(13, 27, 42, 0.7);
+      --border-color: #1e3a8a;
+      --hover-border: #3b82f6;
+      --accent-glow: #2563eb;
+      --text-main: #ffffff;
+      --text-sub: #93c5fd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #020617;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--text-main);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: var(--bg-gradient);
+      border-radius: 20px;
+      padding: 24px 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(37, 99, 235, 0.2);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      text-align: center;
+    }
+
+    /* Imagen Banner */
+    .header-image {
+      width: 100%;
+      height: 140px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1e293b;
+    }
+
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Título y Logo */
+    .logo-container {
+      margin-bottom: 20px;
+    }
+
+    .logo-container img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+    }
+
+    .logo-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-sub);
+    }
+
+    /* Botones de enlaces */
+    .btn-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-link:hover {
+      border-color: var(--hover-border);
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 24px 0 12px 0;
+      color: var(--text-sub);
+    }
+
+    /* Contenedor de Información con Desplazamiento Horizontal Suave */
+    .info-scroll-container {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .info-scroll-container::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .info-scroll-container::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 10px;
+    }
+
+    .info-card {
+      min-width: 160px;
+      max-width: 160px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: left;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+
+    .info-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .info-card h4 {
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .info-card p {
+      font-size: 10px;
+      color: var(--text-sub);
+      line-height: 1.3;
+    }
+
+    /* Redes Sociales */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .social-icons a {
+      color: var(--text-sub);
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--hover-border);
+    }
+
+    .steps-footer {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 16px;
+      font-size: 9px;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- IMAGEN BANNER -->
+    <div class="header-image">
+      <img src="banner.jpg" alt="Imagen Banner">
+    </div>
+
+    <!-- TITULO Y LOGO -->
+    <div class="logo-container">
+      <img src="logo.jpg" alt="Logo de la empresa">
+      <div class="logo-title">Unlocked Cards</div>
+      <div class="subtitle">Empresa de Tecnología de Información</div>
+    </div>
+
+    <!-- BOTONES PRINCIPALES -->
+    <a href="https://wa.me/51920832884" target="_blank" class="btn-link">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <a href="https://www.ventalista.lat" target="_blank" class="btn-link">
+      <i class="fa-solid fa-globe"></i> Página Web
+    </a>
+
+    <a href="https://maps.google.com/?q=-12.046374,-77.042793" target="_blank" class="btn-link">
+      <i class="fa-solid fa-map-location-dot"></i> Ubicación
+    </a>
+
+    <a href="tel:920832884" class="btn-link">
+      <i class="fa-solid fa-user"></i> Contacto
+    </a>
+
+    <!-- SECCIÓN INFORMACIÓN CON ROTACIÓN AUTOMÁTICA -->
+    <div class="section-title">Información</div>
+    <div class="info-scroll-container" id="autoScrollContainer">
+      
+      <div class="info-card">
+        <img src="imagen1.jpg" alt="Imagen 1">
+        <h4>Servicio 1</h4>
+        <p>Descripción detallada de la opción o producto 1.</p>
+      </div>
+
+      <div class="info-card">
+        <img src="imagen2.jpg" alt="Imagen 2">
+        <h4>Servicio 2</h4>
+        <p>Descripción detallada de la opción o producto 2.</p>
+      </div>
+
+      <div class="info-card">
+        <img src="imagen3.jpg" alt="Imagen 3">
+        <h4>Servicio 3</h4>
+        <p>Descripción detallada de la opción o producto 3.</p>
+      </div>
+
+      <div class="info-card">
+        <img src="imagen4.jpg" alt="Imagen 4">
+        <h4>Servicio 4</h4>
+        <p>Descripción detallada de la opción o producto 4.</p>
+      </div>
+
+      <div class="info-card">
+        <img src="imagen5.jpg" alt="Imagen 5">
+        <h4>Servicio 5</h4>
+        <p>Descripción detallada de la opción o producto 5.</p>
+      </div>
+
+    </div>
+
+    <!-- REDES SOCIALES -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com/ventalista.lat/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.instagram.com/venta_lista/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ventalista.lat" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <div class="steps-footer">
+      <div>PASO 1<br>Retira tu Tarjeta</div>
+      <div>PASO 2<br>Acércala al celular</div>
+      <div>PASO 3<br>Conéctate y comparte</div>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT PARA AUTORROTACIÓN DE LAS CASILLAS -->
+  <script>
+    const container = document.getElementById('autoScrollContainer');
+    const scrollAmount = 172; // Ancho de la tarjeta (160px) + el gap (12px)
+    const delay = 2500; // Intervalo de tiempo en milisegundos (2.5 segundos)
+    let autoScrollInterval;
+
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        // Si llegó al final del scroll, regresa al inicio (0)
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Desplaza a la siguiente casilla
+          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }, delay);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScrollInterval);
+    }
+
+    // Iniciar rotación al cargar
+    startAutoScroll();
+
+    // Pausar si el usuario toca o pasa el cursor encima
+    container.addEventListener('mouseenter', stopAutoScroll);
+    container.addEventListener('mouseleave', startAutoScroll);
+    container.addEventListener('touchstart', stopAutoScroll);
+    container.addEventListener('touchend', startAutoScroll);
+  </script>
+
+</body>
+</html>
