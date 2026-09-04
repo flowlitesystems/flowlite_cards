@@ -1,85 +1,1004 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flowlite - Tarjetas Digitales NFC</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapfy Card - Tarjetas Inteligentes</title>
+    <style>
+        :root {
+            --tapfy-blue: #3b82f6;
+        }
 
-    body {
-      background: #020617;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-    .card {
-      max-width: 400px;
-      width: 100%;
-      background: linear-gradient(180deg, #0a192f 0%, #030814 100%);
-      padding: 40px 20px;
-      border-radius: 20px;
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-    }
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            line-height: 1.5;
+        }
 
-    .icon {
-      font-size: 50px;
-      color: #3b82f6;
-      margin-bottom: 20px;
-    }
+        /* Top Bar */
+        .top-bar {
+            background-color: #3b82f6;
+            color: #ffffff;
+            text-align: center;
+            padding: 8px;
+            font-size: 13px;
+        }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
+        .top-bar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-    p {
-      color: #93c5fd;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 30px;
-    }
+        /* Header */
+        header {
+            background-color: #0b0f19;
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background: #2563eb;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative;
+        }
 
-    .btn:hover {
-      background: #1d4ed8;
-    }
-  </style>
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--tapfy-blue) !important;
+        }
+
+        .tagline {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #7f8da3;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 10px 0 15px;
+            border-top: 1px solid #1e293b;
+            font-size: 14px;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.2s;
+            padding-bottom: 2px;
+        }
+
+        .nav-links button:hover, .nav-links button.active {
+            color: #ffffff;
+            font-weight: 500;
+            border-bottom: 2px solid #3b82f6;
+        }
+
+        /* Screens (Páginas) */
+        .screen {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* INICIO SCREEN */
+        #pantalla-inicio {
+            background: linear-gradient(180deg, #0b0f19 0%, #111827 100%);
+            padding-top: 20px;
+        }
+
+        .hero-title {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: -0.4px;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: #94a3b8;
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 0 10px;
+        }
+
+        /* Casilleros informativos de Inicio */
+        .feature-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 480px;
+            margin: 0 auto 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, #111827 0%, #0f1725 100%);
+            border: 1px solid #223047;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: #9aa8bc;
+            line-height: 1.6;
+        }
+
+        .feature-media {
+            margin-top: 15px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #1e293b;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .feature-media video,
+        .feature-media img {
+            width: 100%;
+            height: auto;
+            max-height: none;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        /* Comparativa */
+        .comparison-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #111827 0%, #0f1725 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #223047;
+        }
+
+        .comparison-container h3 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: -0.2px;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .comp-table th, .comp-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .comp-table th {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .comp-table td:first-child {
+            text-align: left;
+            color: #94a3b8;
+        }
+
+        /* PRODUCTOS SCREEN */
+        .products-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #ffffff;
+            color: #0b0f19;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #666;
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+
+        .product-img img {
+    	width: 100%;
+   	height: 100%;
+    	object-fit: contain; /* Muestra la imagen completa sin recortar */
+    	border-radius: 6px;
+    	background-color: #f8f9fa; /* Fondo opcional para rellenar espacios si la proporción varía */
+
+        }
+
+        /* Estilos del Carrusel para Productos a Colores */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track-container {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+       .carousel-slide img {
+    	width: 100%;
+    	height: 180px;
+    	border-radius: 6px;
+    	object-fit: contain; /* Muestra la imagen completa dentro del alto de 180px */
+    	background-color: #f8f9fa; /* Fondo opcional para los espacios laterales */
+	}
+
+        .color-name {
+            margin-top: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.7);
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 6px 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .prev-btn {
+            left: 5px;
+        }
+
+        .next-btn {
+            right: 5px;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .color-select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background: #fff;
+            font-size: 14px;
+        }
+
+        .btn-buy {
+            background-color: #0b0f19;
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Catálogo de Diseños (20 imágenes) */
+        .catalog-section {
+            max-width: 480px;
+            margin: 30px auto 0;
+            background: linear-gradient(145deg, #111827 0%, #0f1725 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #223047;
+        }
+
+        .catalog-section h3 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .catalog-thumb {
+            background: #1e293b;
+            border-radius: 6px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #94a3b8;
+            cursor: pointer;
+            border: 1px solid #334155;
+            transition: transform 0.2s, border-color 0.2s;
+            text-align: center;
+            padding: 4px;
+        }
+
+        .catalog-thumb:hover {
+            transform: scale(1.03);
+            border-color: #3b82f6;
+            color: #fff;
+        }
+
+        /* Modal para las 20 imágenes */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #111827;
+            border: 1px solid #374151;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .modal-body-img {
+            width: 100%;
+            height: 220px;
+            background: #1f2937;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            color: #cbd5e1;
+            font-size: 14px;
+            border: 1px solid #374151;
+            overflow: hidden;
+        }
+
+        .modal-body-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* CONTACTO SCREEN */
+        .contact-box {
+            max-width: 480px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #111827 0%, #0f1725 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #223047;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            color: #94a3b8;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #374151;
+            background: #1f2937;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.20);
+        }
+
+        /* Botón flotante de contacto */
+        .floating-message {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #25d366 0%, #128c7e 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 28px;
+            box-shadow: 0 10px 28px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .floating-message:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #070a12;
+            padding: 40px 20px;
+            font-size: 13px;
+            color: #94a3b8;
+            border-top: 1px solid #1e293b;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-content-center {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .footer-links {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+        }
+
+        .payment-methods {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #64748b;
+        }
+
+        .copyright {
+            font-size: 12px;
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
+            width: 100%;
+            color: #64748b;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="icon">
-      <i class="fa-solid fa-nfc-symbol"></i>
+    <div class="top-bar">
+        Tienda WhatsApp: <a href="https://wa.me/51920832884" target="_blank">+51 920 832 884</a>
     </div>
-    <h1>Flowlite NFC</h1>
-    <p>Plataforma de gestión y perfiles digitales para tarjetas inteligentes NFC.</p>
-    <a href="https://wa.me/51920832884?text=Hola,%20busco%20información%20sobre%20las%20tarjetas%20NFC" class="btn">Solicitar mi Tarjeta</a>
-  </div>
+
+    <header>
+        <div class="header-content">
+            <a class="logo" onclick="cambiarPantalla('inicio')">
+                Tapfy Card <span style="font-weight:300; font-size:11px; letter-spacing: 1px;">by Flowlite Systems</span>
+                <small class="tagline">Toca. Conecta. Comparte.</small>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <button id="btn-inicio" class="active" onclick="cambiarPantalla('inicio')">Inicio</button>
+            <button id="btn-productos" onclick="cambiarPantalla('productos')">Productos</button>
+            <button id="btn-contacto" onclick="cambiarPantalla('contacto')">Contacto</button>
+        </nav>
+    </header>
+
+    <div id="pantalla-inicio" class="screen active">
+        <h1 class="hero-title">Tapfy Card: Toca. Conecta. Comparte.</h1>
+        <p class="hero-subtitle">Comparte tu información al instante. Una sola tarjeta para conectar tu web, redes sociales, WhatsApp, contacto y todos tus enlaces.</p>
+
+        <div class="feature-cards">
+            <div class="feature-card">
+                <h3>Nueva generación de tarjetas de presentación</h3>
+                <p>Una forma moderna, práctica y profesional de compartir tus datos y conectar con tus clientes.</p>
+                <div class="feature-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="videopresentaciontapfy.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de videos.
+                    </video>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>Centraliza tu información</h3>
+                <p>Reúne tu web, redes sociales, WhatsApp, contacto y todos tus enlaces en un solo lugar.</p>
+                <div class="feature-media">
+                    <img src="imageniniciotapfy1.jpg" alt="Centraliza tu información">
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>¿Qué es Tapfy Card?</h3>
+                <p>Es una tarjeta inteligente personalizada con tecnología NFC y código QR que lleva a tu perfil digital, donde tus clientes pueden abrir tu web, redes sociales, WhatsApp, contacto y otros enlaces con un solo toque, sin instalar aplicaciones.</p>
+                <div class="feature-media">
+                    <img src="imageniniciotapfy2.jpg" alt="¿Qué es Tapfy Card?">
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-container">
+            <h3>Comparativa con Tarjetas Tradicionales</h3>
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Tapfy Card</th>
+                        <th>Tradicionales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inversión</td>
+                        <td>Única</td>
+                        <td>Múltiples compras</td>
+                    </tr>
+                    <tr>
+                        <td>Compartir</td>
+                        <td>Instantáneo (NFC/QR)</td>
+                        <td>Manualmente</td>
+                    </tr>
+                    <tr>
+                        <td>Duración</td>
+                        <td>+10 años</td>
+                        <td>Meses</td>
+                    </tr>
+                    <tr>
+                        <td>Actualizable</td>
+                        <td>Sí ✓</td>
+                        <td>No ✕</td>
+                    </tr>
+                    <tr>
+                        <td>Ecológico</td>
+                        <td>Sí ✓</td>
+                        <td>No ✕</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="pantalla-productos" class="screen">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="products-container">
+            
+            <div class="product-card">
+                <h3>Tapfy Card Blanca Personalizada</h3>
+                <div class="product-img">
+                    <img src="imagenproductostapfy1.jpg" alt="Tapfy Card Blanca Personalizada">
+                </div>
+                <div class="price">S/. 129.90 PEN</div>
+                <button class="btn-buy" onclick="seleccionarProducto('Tapfy Card Blanca Personalizada (S/. 129.90 PEN)')">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card">
+                <h3>Tapfy Card a Colores</h3>
+                
+                <!-- Carrusel con flechas para pasar las imágenes una a una -->
+                <div class="carousel-container">
+                    <button class="carousel-btn prev-btn" onclick="cambiarSlide(-1)">&#10094;</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="carousel-slide">
+                                <img src="imagenproductostapfy2.jpg" alt="Negro Flowlite">
+                                <span class="color-name">Negro Flowlite</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="imagenproductostapfy3.jpg" alt="Azul Electric">
+                                <span class="color-name">Azul Electric</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="imagenproductostapfy4.jpg" alt="Verde Deep">
+                                <span class="color-name">Verde Deep</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="imagenproductostapfy5.jpg" alt="Amarillo Solar">
+                                <span class="color-name">Amarillo Solar</span>
+                            </div>
+                           	<div class="carousel-slide">
+                                <img src="imagenproductostapfy6.jpg" alt="Rojo Tapfy">
+                                <span class="color-name">Rojo Tapfy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next-btn" onclick="cambiarSlide(1)">&#10095;</button>
+                </div>
+
+                <select class="color-select" id="colorSelect" onchange="sincronizarSelectConCarrusel()">
+                    <option value="">Selecciona un color (Opciones)</option>
+                    <option value="Negro Flowlite">Negro Flowlite</option>
+                    <option value="Azul Electric">Azul Electric</option>
+                    <option value="Verde Deep">Verde Deep</option>
+                    <option value="Amarillo Solar">Amarillo Solar</option>
+                    <option value="Rojo Tapfy">Rojo Tapfy</option>
+                </select>
+                <div class="price">S/. 99.90 PEN</div>
+                <button class="btn-buy" onclick="seleccionarProductoColor()">Agregar al carrito</button>
+            </div>
+
+        </div>
+
+        <div class="catalog-section">
+            <h3>Catálogo de Diseños</h3>
+            <p style="font-size: 12px; color: #94a3b8; text-align: center; margin-bottom: 15px;">Haz clic en cualquier diseño para visualizarlo:</p>
+            <div class="catalog-grid" id="catalogGrid">
+            </div>
+        </div>
+    </div>
+
+    <div id="pantalla-contacto" class="screen">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-box">
+            <div class="contact-info">
+                <p>Teléfono / WhatsApp: <a href="https://wa.me/51920832884" target="_blank">+51 920 832 884</a></p>
+            </div>
+
+            <form onsubmit="enviarWhatsApp(event)">
+                <div class="form-group">
+                    <input type="text" id="nombre" placeholder="Nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="telefono" placeholder="Número de teléfono" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="comentario" placeholder="Comentario o producto seleccionado" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar por WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="imageModal" onclick="cerrarModalFuera(event)">
+        <div class="modal-content" id="modalContainer">
+            <button class="modal-close" onclick="cerrarModal()">&times;</button>
+            <h4 id="modalTitle" style="margin-bottom: 5px;">Diseño de Tarjeta</h4>
+            <div class="modal-body-img" id="modalImgContainer">
+            </div>
+            <p id="modalSubtitle" style="font-size: 12px; color: #94a3b8;"></p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="textModal" onclick="cerrarModalTextoFuera(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="cerrarModalTexto()">&times;</button>
+            <h3 id="textModalTitle" style="color: #60a5fa; margin-bottom: 15px;">Título</h3>
+            <p id="textModalBody" style="font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px;">Contenido</p>
+            <button class="btn-primary" onclick="cerrarModalTexto()">Aceptar</button>
+        </div>
+    </div>
+
+    <a class="floating-message" href="https://wa.me/51920832884" target="_blank" aria-label="Contactar por WhatsApp">💬</a>
+
+    <footer>
+        <div class="footer-content-center">
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Menú</h4>
+                    <ul>
+                        <li><a onclick="abrirModalTexto('¿Cómo Comprar en Tapfy Card?', 'Para comprar en Tapfy Card, simplemente selecciona tu modelo favorito en la sección de Productos, completa las opciones requeridas y haz clic en agregar al carrito o envíanos un mensaje directo por nuestro botón de WhatsApp para coordinar el diseño personalizado.')">¿Cómo Comprar?</a></li>
+                        <li><a onclick="abrirModalTexto('¿Cómo Actualizar tu Tarjeta?', 'Tu Tapfy Card está vinculada a tu perfil digital exclusivo. Puedes actualizar tus enlaces, redes sociales y datos de contacto en cualquier momento  sin necesidad de cambiar de tarjeta física.')">¿Cómo Actualizar?</a></li>
+                        <li><a onclick="abrirModalTexto('Manual de Uso', 'Acerca tu Tapfy Card a la parte posterior de cualquier smartphone compatible con tecnología NFC para abrir tu perfil digital al instante. Alternativamente, puedes escanear el código QR impreso en la tarjeta con la cámara del teléfono.')">Manual de Uso</a></li>
+                        <li><a onclick="abrirModalTexto('Preguntas Frecuentes (FAQ)', '¿Necesita aplicación el otro usuario? No, cualquier teléfono moderno puede leer el NFC o escanear el QR sin instalar ninguna aplicación adicional. ¿Es compatible con iPhone y Android? Sí, con prácticamente todos los teléfonos actuales.')">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Políticas</h4>
+                    <ul>
+                        <li><a onclick="abrirModalTexto('Política de Privacidad', 'En Tapfy Card protegemos estrictamente tus datos personales y la información compartida en tu perfil digital, garantizando que solo sea accesible a través de los medios autorizados por ti.')">Privacidad</a></li>
+                        <li><a onclick="abrirModalTexto('Política de Garantía', 'Ofrecemos garantía ante defectos de fábrica en el chip NFC y los materiales de impresión de tu tarjeta durante los primeros 03 meses posteriores a tu compra.')">Garantía</a></li>
+                        <li><a onclick="abrirModalTexto('Política de Envíos', 'Realizamos envíos seguros a nivel nacional con tiempos estimados de entrega dependiendo de tu ubicación exacta en el país.')">Envíos</a></li>
+                        <li><a onclick="abrirModalTexto('Términos y Condiciones', 'El uso de los servicios de Tapfy Card y su plataforma digital de enlaces está sujeto a los términos establecidos por Flowlite Systems para asegurar una experiencia óptima.')">Términos</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+             
+            </div>
+
+            <div class="copyright">
+                © 2026, Tapfy Card — Un producto de Flowlite Systems
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function cambiarPantalla(pantalla) {
+            document.getElementById('pantalla-inicio').classList.remove('active');
+            document.getElementById('pantalla-productos').classList.remove('active');
+            document.getElementById('pantalla-contacto').classList.remove('active');
+
+            document.getElementById('btn-inicio').classList.remove('active');
+            document.getElementById('btn-productos').classList.remove('active');
+            document.getElementById('btn-contacto').classList.remove('active');
+
+            document.getElementById('pantalla-' + pantalla).classList.add('active');
+            document.getElementById('btn-' + pantalla).classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
+
+        function seleccionarProducto(nombreProducto) {
+            document.getElementById('comentario').value = `Hola, quiero comprar: ${nombreProducto}`;
+            cambiarPantalla('contacto');
+        }
+
+        // Lógica del carrusel de colores
+        let indiceActual = 0;
+
+        function cambiarSlide(direccion) {
+            const track = document.getElementById('carouselTrack');
+            const slides = track.getElementsByClassName('carousel-slide');
+            const select = document.getElementById('colorSelect');
+            
+            indiceActual += direccion;
+            
+            if (indiceActual >= slides.length) {
+                indiceActual = 0;
+            } else if (indiceActual < 0) {
+                indiceActual = slides.length - 1;
+            }
+            
+            const desplazamiento = -indiceActual * 100;
+            track.style.transform = `translateX(${desplazamiento}%)`;
+            select.selectedIndex = indiceActual + 1;
+        }
+
+        function sincronizarSelectConCarrusel() {
+            const select = document.getElementById('colorSelect');
+            const track = document.getElementById('carouselTrack');
+            const indiceSeleccionado = select.selectedIndex - 1;
+            
+            if (indiceSeleccionado >= 0) {
+                indiceActual = indiceSeleccionado;
+                const desplazamiento = -indiceActual * 100;
+                track.style.transform = `translateX(${desplazamiento}%)`;
+            }
+        }
+
+        function seleccionarProductoColor() {
+            const select = document.getElementById('colorSelect');
+            const colorSeleccionado = select.value;
+            if (!colorSeleccionado) {
+                alert('Por favor selecciona un color');
+                return;
+            }
+            document.getElementById('comentario').value = `Hola, quiero comprar la Tapfy Card a colores en color: ${colorSeleccionado} (S/. 99.90 PEN)`;
+            cambiarPantalla('contacto');
+        }
+
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const comentario = document.getElementById('comentario').value;
+
+            const mensaje = `Hola, mi nombre es ${nombre}. Mi teléfono es ${telefono}. Comentario/Elección: ${comentario}`;
+            const url = `https://wa.me/51920832884?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        const catalogGrid = document.getElementById('catalogGrid');
+        for (let i = 1; i <= 20; i++) {
+            const thumb = document.createElement('div');
+            thumb.className = 'catalog-thumb';
+            thumb.innerHTML = `Diseño ${i}`;
+            thumb.onclick = () => abrirModalImagen(i);
+            catalogGrid.appendChild(thumb);
+        }
+
+        function abrirModalImagen(index) {
+            document.getElementById('modalTitle').innerText = `Tapfy Card - Diseño #${index}`;
+            document.getElementById('modalImgContainer').innerHTML = `<img src="imagenproductostapfy2.jpg" alt="Diseño ${index}">`;
+            document.getElementById('modalSubtitle').innerText = `Vista previa del Diseño #${index} para personalización`;
+            document.getElementById('imageModal').classList.add('active');
+        }
+
+        function cerrarModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        function cerrarModalFuera(event) {
+            if (event.target.id === 'imageModal') {
+                cerrarModal();
+            }
+        }
+
+        function abrirModalTexto(titulo, contenido) {
+            document.getElementById('textModalTitle').innerText = titulo;
+            document.getElementById('textModalBody').innerText = contenido;
+            document.getElementById('textModal').classList.add('active');
+        }
+
+        function cerrarModalTexto() {
+            document.getElementById('textModal').classList.remove('active');
+        }
+
+        function cerrarModalTextoFuera(event) {
+            if (event.target.id === 'textModal') {
+                cerrarModalTexto();
+            }
+        }
+    </script>
 
 </body>
 </html>
