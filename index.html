@@ -19,7 +19,8 @@
         body {
             background-color: #0b0f19;
             color: #f3f4f6;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-size: 16px;
         }
 
         /* Top Bar */
@@ -27,8 +28,8 @@
             background-color: #3b82f6;
             color: #ffffff;
             text-align: center;
-            padding: 8px;
-            font-size: 13px;
+            padding: 10px;
+            font-size: 14px;
         }
 
         .top-bar a {
@@ -56,7 +57,7 @@
 
         .logo {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
             letter-spacing: 0.2px;
             display: flex;
             flex-direction: column;
@@ -68,12 +69,13 @@
 
         .logo span {
             color: var(--tapfy-blue) !important;
+            font-size: 12px;
         }
 
         .tagline {
             display: block;
             margin-top: 4px;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -87,14 +89,13 @@
             gap: 25px;
             padding: 10px 0 15px;
             border-top: 1px solid #1e293b;
-            font-size: 14px;
         }
 
         .nav-links button {
             background: none;
             border: none;
             color: #94a3b8;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             transition: color 0.2s;
             padding-bottom: 2px;
@@ -117,7 +118,7 @@
         }
 
         .section-title {
-            font-size: 24px;
+            font-size: 26px;
             text-align: center;
             margin-bottom: 30px;
         }
@@ -129,7 +130,7 @@
         }
 
         .hero-title {
-            font-size: 26px;
+            font-size: 28px;
             text-align: center;
             margin-bottom: 12px;
             line-height: 1.3;
@@ -137,7 +138,7 @@
         }
 
         .hero-subtitle {
-            font-size: 14px;
+            font-size: 16px;
             color: #94a3b8;
             text-align: center;
             margin-bottom: 35px;
@@ -161,13 +162,13 @@
         }
 
         .feature-card h3 {
-            font-size: 17px;
+            font-size: 19px;
             margin-bottom: 8px;
             color: #ffffff;
         }
 
         .feature-card p {
-            font-size: 13px;
+            font-size: 15px;
             color: #9aa8bc;
             line-height: 1.6;
         }
@@ -203,7 +204,7 @@
 
         .comparison-container h3 {
             text-align: center;
-            font-size: 18px;
+            font-size: 19px;
             margin-bottom: 20px;
             letter-spacing: -0.2px;
         }
@@ -211,7 +212,7 @@
         .comp-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .comp-table th, .comp-table td {
@@ -249,7 +250,7 @@
         }
 
         .product-card h3 {
-            font-size: 18px;
+            font-size: 20px;
             margin-bottom: 15px;
             color: #111;
         }
@@ -264,7 +265,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
             border: 1px solid #eee;
             overflow: hidden;
@@ -319,7 +320,7 @@
 
         .color-name {
             margin-top: 6px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: #334155;
         }
@@ -352,7 +353,7 @@
         }
 
         .price {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 15px;
             color: #222;
@@ -360,12 +361,12 @@
 
         .color-select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
             border-radius: 6px;
             border: 1px solid #ccc;
             background: #fff;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .btn-buy {
@@ -373,9 +374,9 @@
             color: #ffffff;
             border: none;
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             cursor: pointer;
         }
@@ -392,7 +393,7 @@
 
         .catalog-section h3 {
             text-align: center;
-            font-size: 18px;
+            font-size: 19px;
             margin-bottom: 15px;
             color: #ffffff;
         }
@@ -428,23 +429,22 @@
         }
 
         .catalog-slide img {
-        width: 100%;
-    	height: 420px; /* Aumenta esta altura para que el contenedor y la imagen sean más altos */
-    	border-radius: 6px;
-    	object-fit: contain; 
-    	background-color: #1e293b;
-    	border: 1px solid #334155;
-
+            width: 100%;
+            height: 420px;
+            border-radius: 6px;
+            object-fit: contain; 
+            background-color: #1e293b;
+            border: 1px solid #334155;
         }
 
         .design-name {
             margin-top: 8px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: #94a3b8;
         }
 
-        /* Modal para el Catálogo de Diseños */
+        /* Modal para el Catálogo de Diseños (Ajustado para mostrar imagen completa sin recortes) */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -468,7 +468,7 @@
             border: 1px solid #374151;
             padding: 25px;
             border-radius: 12px;
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
             text-align: center;
             color: #fff;
@@ -482,30 +482,30 @@
             background: none;
             border: none;
             color: #94a3b8;
-            font-size: 20px;
+            font-size: 24px;
             cursor: pointer;
         }
 
         .modal-body-img {
-    	width: 100%;
-    	height: 450px; /* Aumenta la altura aquí también para el zoom */
-    	background: #1f2937;
-    	border-radius: 8px;
-    	display: flex;
-    	align-items: center;
-    	justify-content: center;
-    	margin: 15px 0;
-    	color: #cbd5e1;
-    	font-size: 14px;
-    	border: 1px solid #374151;
-    	overflow: hidden;
-
+            width: 100%;
+            height: 70vh; /* Se adapta dinámicamente a la pantalla sin recortar */
+            background: #1f2937;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            color: #cbd5e1;
+            font-size: 15px;
+            border: 1px solid #374151;
+            overflow: hidden;
         }
 
         .modal-body-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Mantiene la proporción completa de la imagen */
+            background-color: #1e293b;
         }
 
         /* CONTACTO SCREEN */
@@ -521,7 +521,7 @@
         .contact-info {
             text-align: center;
             margin-bottom: 25px;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .contact-info p {
@@ -541,16 +541,16 @@
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border-radius: 6px;
             border: 1px solid #374151;
             background: #1f2937;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .form-group textarea {
-            height: 100px;
+            height: 110px;
             resize: vertical;
         }
 
@@ -559,8 +559,9 @@
             color: #ffffff;
             border: none;
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border-radius: 6px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 8px 22px rgba(37, 99, 235, 0.20);
@@ -597,7 +598,7 @@
         footer {
             background-color: #070a12;
             padding: 40px 20px;
-            font-size: 13px;
+            font-size: 14px;
             color: #94a3b8;
             border-top: 1px solid #1e293b;
             margin-top: 40px;
@@ -623,7 +624,7 @@
         .footer-col h4 {
             color: #fff;
             margin-bottom: 12px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
         }
 
@@ -647,13 +648,13 @@
         }
 
         .payment-methods {
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 2px;
             color: #64748b;
         }
 
         .copyright {
-            font-size: 12px;
+            font-size: 13px;
             border-top: 1px solid #1e293b;
             padding-top: 20px;
             width: 100%;
@@ -670,7 +671,7 @@
     <header>
         <div class="header-content">
             <a class="logo" onclick="cambiarPantalla('inicio')">
-                Nexo Card <span style="font-weight:300; font-size:11px; letter-spacing: 1px;">by Flowlite Systems</span>
+                Nexo Card <span style="font-weight:300; font-size:12px; letter-spacing: 1px;">by Flowlite Systems</span>
                 <small class="tagline">Toca. Conecta. Comparte.</small>
             </a>
         </div>
@@ -816,13 +817,12 @@
 
         <div class="catalog-section">
             <h3>Catálogo de Diseños</h3>
-            <p style="font-size: 12px; color: #94a3b8; text-align: center; margin-bottom: 15px;">Usa las flechas para explorar los 10 diseños disponibles:</p>
+            <p style="font-size: 13px; color: #94a3b8; text-align: center; margin-bottom: 15px;">Toca cualquier diseño para ampliarlo y verlo por completo:</p>
             
             <div class="catalog-carousel-container">
                 <button class="carousel-btn prev-btn" onclick="cambiarCatalogSlide(-1)">&#10094;</button>
                 <div class="catalog-track-container">
-                    <div class="catalog-track" id="catalogTrack">
-                        </div>
+                    <div class="catalog-track" id="catalogTrack"></div>
                 </div>
                 <button class="carousel-btn next-btn" onclick="cambiarCatalogSlide(1)">&#10095;</button>
             </div>
@@ -851,21 +851,22 @@
         </div>
     </div>
 
+    <!-- Modal para ver el diseño completo sin recortes -->
     <div class="modal-overlay" id="imageModal" onclick="cerrarModalFuera(event)">
         <div class="modal-content" id="modalContainer">
             <button class="modal-close" onclick="cerrarModal()">&times;</button>
-            <h4 id="modalTitle" style="margin-bottom: 5px;">Diseño de Tarjeta</h4>
+            <h4 id="modalTitle" style="margin-bottom: 5px; font-size: 18px;">Diseño de Tarjeta</h4>
             <div class="modal-body-img" id="modalImgContainer"></div>
-            <p id="modalSubtitle" style="font-size: 12px; color: #94a3b8;"></p>
+            <p id="modalSubtitle" style="font-size: 13px; color: #94a3b8; margin-top: 5px;"></p>
         </div>
     </div>
 
     <div class="modal-overlay" id="textModal" onclick="cerrarModalTextoFuera(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="cerrarModalTexto()">&times;</button>
-            <h3 id="textModalTitle" style="color: #60a5fa; margin-bottom: 15px;">Título</h3>
-            <p id="textModalBody" style="font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px;">Contenido</p>
-            <button class="btn-primary" onclick="cerrarModalTexto()">Aceptar</button>
+            <h3 id="textModalTitle" style="color: #60a5fa; margin-bottom: 15px; font-size: 19px;">Título</h3>
+            <p id="textModalBody" style="font-size: 15px; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px;">Contenido</p>
+            <button class="btn-buy" onclick="cerrarModalTexto()">Aceptar</button>
         </div>
     </div>
 
@@ -976,7 +977,7 @@
             window.open(url, '_blank');
         }
 
-        /* Lógica del carrusel de Catálogo de Diseños (10 imágenes: nexodiseño1.jpg hasta nexodiseño10.jpg) */
+        /* Lógica del carrusel de Catálogo de Diseños */
         const catalogTrack = document.getElementById('catalogTrack');
         let catalogIndex = 0;
         const totalCatalogSlides = 10;
@@ -986,7 +987,7 @@
             slide.className = 'catalog-slide';
             slide.innerHTML = `
                 <img src="nexodiseño${i}.jpg" alt="Diseño ${i}">
-                <span class="design-name">Diseño #${i}</span>
+                <span class="design-name">Diseño #${i} (Toca para ampliar)</span>
             `;
             slide.onclick = () => abrirModalImagen(i);
             catalogTrack.appendChild(slide);
@@ -1007,7 +1008,7 @@
         function abrirModalImagen(index) {
             document.getElementById('modalTitle').innerText = `Nexo Card - Diseño #${index}`;
             document.getElementById('modalImgContainer').innerHTML = `<img src="nexodiseño${index}.jpg" alt="Diseño ${index}">`;
-            document.getElementById('modalSubtitle').innerText = `Vista previa del Diseño #${index} para personalización`;
+            document.getElementById('modalSubtitle').innerText = `Vista completa del Diseño #${index}`;
             document.getElementById('imageModal').classList.add('active');
         }
 
@@ -1040,5 +1041,3 @@
 
 </body>
 </html>
-
-```
