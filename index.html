@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tapfy Card - Tarjetas Inteligentes</title>
+    <title>Nexo Card - Tarjetas Inteligentes</title>
     <style>
         :root {
             --tapfy-blue: #3b82f6;
@@ -271,12 +271,11 @@
         }
 
         .product-img img {
-    	width: 100%;
-   	height: 100%;
-    	object-fit: contain; /* Muestra la imagen completa sin recortar */
-    	border-radius: 6px;
-    	background-color: #f8f9fa; /* Fondo opcional para rellenar espacios si la proporción varía */
-
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+            background-color: #f8f9fa;
         }
 
         /* Estilos del Carrusel para Productos a Colores */
@@ -310,13 +309,13 @@
             box-sizing: border-box;
         }
 
-       .carousel-slide img {
-    	width: 100%;
-    	height: 180px;
-    	border-radius: 6px;
-    	object-fit: contain; /* Muestra la imagen completa dentro del alto de 180px */
-    	background-color: #f8f9fa; /* Fondo opcional para los espacios laterales */
-	}
+        .carousel-slide img {
+            width: 100%;
+            height: 180px;
+            border-radius: 6px;
+            object-fit: contain;
+            background-color: #f8f9fa;
+        }
 
         .color-name {
             margin-top: 6px;
@@ -381,7 +380,7 @@
             cursor: pointer;
         }
 
-        /* Catálogo de Diseños (20 imágenes) */
+        /* Catálogo de Diseños en Carrusel (10 imágenes) */
         .catalog-section {
             max-width: 480px;
             margin: 30px auto 0;
@@ -398,35 +397,54 @@
             color: #ffffff;
         }
 
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .catalog-thumb {
-            background: #1e293b;
-            border-radius: 6px;
-            height: 70px;
+        .catalog-carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
-            color: #94a3b8;
+        }
+
+        .catalog-track-container {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .catalog-track {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .catalog-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
             cursor: pointer;
-            border: 1px solid #334155;
-            transition: transform 0.2s, border-color 0.2s;
-            text-align: center;
-            padding: 4px;
         }
 
-        .catalog-thumb:hover {
-            transform: scale(1.03);
-            border-color: #3b82f6;
-            color: #fff;
+        .catalog-slide img {
+        width: 100%;
+    	height: 420px; /* Aumenta esta altura para que el contenedor y la imagen sean más altos */
+    	border-radius: 6px;
+    	object-fit: contain; 
+    	background-color: #1e293b;
+    	border: 1px solid #334155;
+
         }
 
-        /* Modal para las 20 imágenes */
+        .design-name {
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        /* Modal para el Catálogo de Diseños */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -469,18 +487,19 @@
         }
 
         .modal-body-img {
-            width: 100%;
-            height: 220px;
-            background: #1f2937;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 15px 0;
-            color: #cbd5e1;
-            font-size: 14px;
-            border: 1px solid #374151;
-            overflow: hidden;
+    	width: 100%;
+    	height: 450px; /* Aumenta la altura aquí también para el zoom */
+    	background: #1f2937;
+    	border-radius: 8px;
+    	display: flex;
+    	align-items: center;
+    	justify-content: center;
+    	margin: 15px 0;
+    	color: #cbd5e1;
+    	font-size: 14px;
+    	border: 1px solid #374151;
+    	overflow: hidden;
+
         }
 
         .modal-body-img img {
@@ -651,7 +670,7 @@
     <header>
         <div class="header-content">
             <a class="logo" onclick="cambiarPantalla('inicio')">
-                Tapfy Card <span style="font-weight:300; font-size:11px; letter-spacing: 1px;">by Flowlite Systems</span>
+                Nexo Card <span style="font-weight:300; font-size:11px; letter-spacing: 1px;">by Flowlite Systems</span>
                 <small class="tagline">Toca. Conecta. Comparte.</small>
             </a>
         </div>
@@ -663,7 +682,7 @@
     </header>
 
     <div id="pantalla-inicio" class="screen active">
-        <h1 class="hero-title">Tapfy Card: Toca. Conecta. Comparte.</h1>
+        <h1 class="hero-title">Nexo Card: Toca. Conecta. Comparte.</h1>
         <p class="hero-subtitle">Comparte tu información al instante. Una sola tarjeta para conectar tu web, redes sociales, WhatsApp, contacto y todos tus enlaces.</p>
 
         <div class="feature-cards">
@@ -672,9 +691,17 @@
                 <p>Una forma moderna, práctica y profesional de compartir tus datos y conectar con tus clientes.</p>
                 <div class="feature-media">
                     <video autoplay muted loop playsinline>
-                        <source src="videopresentaciontapfy.mp4" type="video/mp4">
+                        <source src="videopresentacionnexo.mp4" type="video/mp4">
                         Tu navegador no soporta la reproducción de videos.
                     </video>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>¿Qué es Nexo Card?</h3>
+                <p>Es una tarjeta inteligente personalizada con tecnología NFC y código QR que lleva a tu perfil digital, donde tus clientes pueden abrir tu web, redes sociales, WhatsApp, contacto y otros enlaces con un solo toque, sin instalar aplicaciones.</p>
+                <div class="feature-media">
+                    <img src="imageninicionexo1.jpg" alt="¿Qué es Nexo Card?">
                 </div>
             </div>
 
@@ -682,15 +709,7 @@
                 <h3>Centraliza tu información</h3>
                 <p>Reúne tu web, redes sociales, WhatsApp, contacto y todos tus enlaces en un solo lugar.</p>
                 <div class="feature-media">
-                    <img src="imageniniciotapfy1.jpg" alt="Centraliza tu información">
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <h3>¿Qué es Tapfy Card?</h3>
-                <p>Es una tarjeta inteligente personalizada con tecnología NFC y código QR que lleva a tu perfil digital, donde tus clientes pueden abrir tu web, redes sociales, WhatsApp, contacto y otros enlaces con un solo toque, sin instalar aplicaciones.</p>
-                <div class="feature-media">
-                    <img src="imageniniciotapfy2.jpg" alt="¿Qué es Tapfy Card?">
+                    <img src="imageninicionexo2.jpg" alt="Centraliza tu información">
                 </div>
             </div>
         </div>
@@ -701,7 +720,7 @@
                 <thead>
                     <tr>
                         <th>Característica</th>
-                        <th>Tapfy Card</th>
+                        <th>Nexo Card</th>
                         <th>Tradicionales</th>
                     </tr>
                 </thead>
@@ -741,18 +760,16 @@
         <div class="products-container">
             
             <div class="product-card">
-                <h3>Tapfy Card Blanca Personalizada</h3>
+                <h3>Nexo Card Blanca Personalizada</h3>
                 <div class="product-img">
-                    <img src="imagenproductostapfy1.jpg" alt="Tapfy Card Blanca Personalizada">
+                    <img src="imagenproductostapfy1.jpg" alt="Nexo Card Blanca Personalizada">
                 </div>
                 <div class="price">S/. 129.90 PEN</div>
-                <button class="btn-buy" onclick="seleccionarProducto('Tapfy Card Blanca Personalizada (S/. 129.90 PEN)')">Agregar al carrito</button>
+                <button class="btn-buy" onclick="seleccionarProducto('Nexo Card Blanca Personalizada (S/. 129.90 PEN)')">Agregar al carrito</button>
             </div>
 
             <div class="product-card">
-                <h3>Tapfy Card a Colores</h3>
-                
-                <!-- Carrusel con flechas para pasar las imágenes una a una -->
+                <h3>Nexo Card a Colores</h3>
                 <div class="carousel-container">
                     <button class="carousel-btn prev-btn" onclick="cambiarSlide(-1)">&#10094;</button>
                     <div class="carousel-track-container">
@@ -773,9 +790,9 @@
                                 <img src="imagenproductostapfy5.jpg" alt="Amarillo Solar">
                                 <span class="color-name">Amarillo Solar</span>
                             </div>
-                           	<div class="carousel-slide">
-                                <img src="imagenproductostapfy6.jpg" alt="Rojo Tapfy">
-                                <span class="color-name">Rojo Tapfy</span>
+                            <div class="carousel-slide">
+                                <img src="imagenproductostapfy6.jpg" alt="Rojo Nexo">
+                                <span class="color-name">Rojo Nexo</span>
                             </div>
                         </div>
                     </div>
@@ -788,8 +805,9 @@
                     <option value="Azul Electric">Azul Electric</option>
                     <option value="Verde Deep">Verde Deep</option>
                     <option value="Amarillo Solar">Amarillo Solar</option>
-                    <option value="Rojo Tapfy">Rojo Tapfy</option>
+                    <option value="Rojo Nexo">Rojo Nexo</option>
                 </select>
+
                 <div class="price">S/. 99.90 PEN</div>
                 <button class="btn-buy" onclick="seleccionarProductoColor()">Agregar al carrito</button>
             </div>
@@ -798,8 +816,15 @@
 
         <div class="catalog-section">
             <h3>Catálogo de Diseños</h3>
-            <p style="font-size: 12px; color: #94a3b8; text-align: center; margin-bottom: 15px;">Haz clic en cualquier diseño para visualizarlo:</p>
-            <div class="catalog-grid" id="catalogGrid">
+            <p style="font-size: 12px; color: #94a3b8; text-align: center; margin-bottom: 15px;">Usa las flechas para explorar los 10 diseños disponibles:</p>
+            
+            <div class="catalog-carousel-container">
+                <button class="carousel-btn prev-btn" onclick="cambiarCatalogSlide(-1)">&#10094;</button>
+                <div class="catalog-track-container">
+                    <div class="catalog-track" id="catalogTrack">
+                        </div>
+                </div>
+                <button class="carousel-btn next-btn" onclick="cambiarCatalogSlide(1)">&#10095;</button>
             </div>
         </div>
     </div>
@@ -830,8 +855,7 @@
         <div class="modal-content" id="modalContainer">
             <button class="modal-close" onclick="cerrarModal()">&times;</button>
             <h4 id="modalTitle" style="margin-bottom: 5px;">Diseño de Tarjeta</h4>
-            <div class="modal-body-img" id="modalImgContainer">
-            </div>
+            <div class="modal-body-img" id="modalImgContainer"></div>
             <p id="modalSubtitle" style="font-size: 12px; color: #94a3b8;"></p>
         </div>
     </div>
@@ -853,30 +877,28 @@
                 <div class="footer-col">
                     <h4>Menú</h4>
                     <ul>
-                        <li><a onclick="abrirModalTexto('¿Cómo Comprar en Tapfy Card?', 'Para comprar en Tapfy Card, simplemente selecciona tu modelo favorito en la sección de Productos, completa las opciones requeridas y haz clic en agregar al carrito o envíanos un mensaje directo por nuestro botón de WhatsApp para coordinar el diseño personalizado.')">¿Cómo Comprar?</a></li>
-                        <li><a onclick="abrirModalTexto('¿Cómo Actualizar tu Tarjeta?', 'Tu Tapfy Card está vinculada a tu perfil digital exclusivo. Puedes actualizar tus enlaces, redes sociales y datos de contacto en cualquier momento  sin necesidad de cambiar de tarjeta física.')">¿Cómo Actualizar?</a></li>
-                        <li><a onclick="abrirModalTexto('Manual de Uso', 'Acerca tu Tapfy Card a la parte posterior de cualquier smartphone compatible con tecnología NFC para abrir tu perfil digital al instante. Alternativamente, puedes escanear el código QR impreso en la tarjeta con la cámara del teléfono.')">Manual de Uso</a></li>
+                        <li><a onclick="abrirModalTexto('¿Cómo Comprar en Nexo Card?', 'Para comprar en Nexo Card, simplemente selecciona tu modelo favorito en la sección de Productos, completa las opciones requeridas y haz clic en agregar al carrito o envíanos un mensaje directo por nuestro botón de WhatsApp para coordinar el diseño personalizado.')">¿Cómo Comprar?</a></li>
+                        <li><a onclick="abrirModalTexto('¿Cómo Actualizar tu Tarjeta?', 'Tu Nexo Card está vinculada a tu perfil digital exclusivo. Puedes actualizar tus enlaces, redes sociales y datos de contacto en cualquier momento sin necesidad de cambiar de tarjeta física.')">¿Cómo Actualizar?</a></li>
+                        <li><a onclick="abrirModalTexto('Manual de Uso', 'Acerca tu Nexo Card a la parte posterior de cualquier smartphone compatible con tecnología NFC para abrir tu perfil digital al instante. Alternativamente, puedes escanear el código QR impreso en la tarjeta con la cámara del teléfono.')">Manual de Uso</a></li>
                         <li><a onclick="abrirModalTexto('Preguntas Frecuentes (FAQ)', '¿Necesita aplicación el otro usuario? No, cualquier teléfono moderno puede leer el NFC o escanear el QR sin instalar ninguna aplicación adicional. ¿Es compatible con iPhone y Android? Sí, con prácticamente todos los teléfonos actuales.')">FAQ</a></li>
                     </ul>
                 </div>
-                
+               
                 <div class="footer-col">
                     <h4>Políticas</h4>
                     <ul>
-                        <li><a onclick="abrirModalTexto('Política de Privacidad', 'En Tapfy Card protegemos estrictamente tus datos personales y la información compartida en tu perfil digital, garantizando que solo sea accesible a través de los medios autorizados por ti.')">Privacidad</a></li>
+                        <li><a onclick="abrirModalTexto('Política de Privacidad', 'En Nexo Card protegemos estrictamente tus datos personales y la información compartida en tu perfil digital, garantizando que solo sea accesible a través de los medios autorizados por ti.')">Privacidad</a></li>
                         <li><a onclick="abrirModalTexto('Política de Garantía', 'Ofrecemos garantía ante defectos de fábrica en el chip NFC y los materiales de impresión de tu tarjeta durante los primeros 03 meses posteriores a tu compra.')">Garantía</a></li>
                         <li><a onclick="abrirModalTexto('Política de Envíos', 'Realizamos envíos seguros a nivel nacional con tiempos estimados de entrega dependiendo de tu ubicación exacta en el país.')">Envíos</a></li>
-                        <li><a onclick="abrirModalTexto('Términos y Condiciones', 'El uso de los servicios de Tapfy Card y su plataforma digital de enlaces está sujeto a los términos establecidos por Flowlite Systems para asegurar una experiencia óptima.')">Términos</a></li>
+                        <li><a onclick="abrirModalTexto('Términos y Condiciones', 'El uso de los servicios de Nexo Card y su plataforma digital de enlaces está sujeto a los términos establecidos por Flowlite Systems para asegurar una experiencia óptima.')">Términos</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="payment-methods">
-             
-            </div>
+            <div class="payment-methods"></div>
 
             <div class="copyright">
-                © 2026, Tapfy Card — Un producto de Flowlite Systems
+                © 2026, Nexo Card — Un producto de Flowlite Systems
             </div>
         </div>
     </footer>
@@ -902,16 +924,14 @@
             cambiarPantalla('contacto');
         }
 
-        // Lógica del carrusel de colores
+        /* Lógica del carrusel de colores de productos */
         let indiceActual = 0;
-
         function cambiarSlide(direccion) {
             const track = document.getElementById('carouselTrack');
             const slides = track.getElementsByClassName('carousel-slide');
             const select = document.getElementById('colorSelect');
             
             indiceActual += direccion;
-            
             if (indiceActual >= slides.length) {
                 indiceActual = 0;
             } else if (indiceActual < 0) {
@@ -927,7 +947,6 @@
             const select = document.getElementById('colorSelect');
             const track = document.getElementById('carouselTrack');
             const indiceSeleccionado = select.selectedIndex - 1;
-            
             if (indiceSeleccionado >= 0) {
                 indiceActual = indiceSeleccionado;
                 const desplazamiento = -indiceActual * 100;
@@ -942,7 +961,7 @@
                 alert('Por favor selecciona un color');
                 return;
             }
-            document.getElementById('comentario').value = `Hola, quiero comprar la Tapfy Card a colores en color: ${colorSeleccionado} (S/. 99.90 PEN)`;
+            document.getElementById('comentario').value = `Hola, quiero comprar la Nexo Card a colores en color: ${colorSeleccionado} (S/. 99.90 PEN)`;
             cambiarPantalla('contacto');
         }
 
@@ -957,18 +976,37 @@
             window.open(url, '_blank');
         }
 
-        const catalogGrid = document.getElementById('catalogGrid');
-        for (let i = 1; i <= 20; i++) {
-            const thumb = document.createElement('div');
-            thumb.className = 'catalog-thumb';
-            thumb.innerHTML = `Diseño ${i}`;
-            thumb.onclick = () => abrirModalImagen(i);
-            catalogGrid.appendChild(thumb);
+        /* Lógica del carrusel de Catálogo de Diseños (10 imágenes: nexodiseño1.jpg hasta nexodiseño10.jpg) */
+        const catalogTrack = document.getElementById('catalogTrack');
+        let catalogIndex = 0;
+        const totalCatalogSlides = 10;
+
+        for (let i = 1; i <= totalCatalogSlides; i++) {
+            const slide = document.createElement('div');
+            slide.className = 'catalog-slide';
+            slide.innerHTML = `
+                <img src="nexodiseño${i}.jpg" alt="Diseño ${i}">
+                <span class="design-name">Diseño #${i}</span>
+            `;
+            slide.onclick = () => abrirModalImagen(i);
+            catalogTrack.appendChild(slide);
+        }
+
+        function cambiarCatalogSlide(direccion) {
+            const slides = catalogTrack.getElementsByClassName('catalog-slide');
+            catalogIndex += direccion;
+            if (catalogIndex >= slides.length) {
+                catalogIndex = 0;
+            } else if (catalogIndex < 0) {
+                catalogIndex = slides.length - 1;
+            }
+            const desplazamiento = -catalogIndex * 100;
+            catalogTrack.style.transform = `translateX(${desplazamiento}%)`;
         }
 
         function abrirModalImagen(index) {
-            document.getElementById('modalTitle').innerText = `Tapfy Card - Diseño #${index}`;
-            document.getElementById('modalImgContainer').innerHTML = `<img src="imagenproductostapfy2.jpg" alt="Diseño ${index}">`;
+            document.getElementById('modalTitle').innerText = `Nexo Card - Diseño #${index}`;
+            document.getElementById('modalImgContainer').innerHTML = `<img src="nexodiseño${index}.jpg" alt="Diseño ${index}">`;
             document.getElementById('modalSubtitle').innerText = `Vista previa del Diseño #${index} para personalización`;
             document.getElementById('imageModal').classList.add('active');
         }
@@ -1002,3 +1040,5 @@
 
 </body>
 </html>
+
+```
