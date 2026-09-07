@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ricardo Respaldiza - FlowLite Systems</title>
+  <meta name="theme-color" content="#6366f1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --accent-1: #ec4899;
+      --accent-2: #8b5cf6;
+      --accent-3: #06b6d4;
+      --text-main: #f8fafc;
+      --text-sub: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--text-main);
+      padding: 16px;
+      overflow-x: hidden;
+    }
+
+    /* Fondo animado con orbes brillantes */
+    .blob {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.4;
+      animation: float 10s infinite alternate ease-in-out;
+    }
+    .blob-1 { top: -50px; left: -50px; background: var(--accent-1); }
+    .blob-2 { bottom: -50px; right: -50px; background: var(--accent-3); animation-delay: -5s; }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 40px) scale(1.1); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 30px 20px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Perfil Creativo con Anillo Neón Animado */
+    .profile-container {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 14px auto;
+    }
+
+    .avatar-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      z-index: -1;
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .profile-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0f172a;
+    }
+
+    .logo-title {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f472b6, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-sub);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Botones Interactivos Dinámicos */
+    .btn-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-link::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-link:hover::after {
+      left: 100%;
+    }
+
+    .btn-link i {
+      font-size: 18px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-link:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Estilo exclusivo para Guardar Contacto */
+    .btn-vcard {
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
+      border: none;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
+    }
+
+    .btn-vcard i {
+      background: none;
+      -webkit-text-fill-color: #ffffff;
+      color: #ffffff;
+    }
+
+    .btn-vcard:hover {
+      box-shadow: 0 12px 30px rgba(236, 72, 153, 0.5);
+      transform: translateY(-3px);
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin: 24px 0 12px 0;
+      color: var(--text-sub);
+    }
+
+    /* Contenedor expandible interno */
+    .expandable-section {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.4s ease;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 16px;
+      margin-bottom: 0;
+      border: 1px solid transparent;
+    }
+
+    .expandable-section.active {
+      max-height: 800px;
+      padding: 15px;
+      margin-bottom: 14px;
+      border-color: var(--card-border);
+      transition: max-height 0.5s ease-in, padding 0.4s ease;
+    }
+
+    .close-sub-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-sub);
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .close-sub-btn:hover {
+      background: rgba(236, 72, 153, 0.2);
+      color: #f472b6;
+      border-color: rgba(236, 72, 153, 0.4);
+    }
+
+    /* Carrusel Interactivo Dinámico */
+    .info-scroll-container {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .info-scroll-container::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .info-scroll-container::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+
+    .info-card {
+      min-width: 160px;
+      max-width: 160px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 10px;
+      text-align: left;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: scale(1.03);
+      border-color: rgba(236, 72, 153, 0.4);
+    }
+
+    .info-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    .info-card h4 {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #f472b6;
+    }
+
+    .info-card p {
+      font-size: 10px;
+      color: var(--text-sub);
+      line-height: 1.3;
+    }
+
+    /* Redes Sociales Dinámicas */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-sub);
+      font-size: 18px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #fff;
+      border-color: transparent;
+      transform: translateY(-3px) rotate(8deg);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    }
+
+    .steps-footer {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 16px;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-sub);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="container">
+    
+    <!-- PERFIL CREATIVO Y DINÁMICO -->
+    <div class="profile-container">
+      <div class="avatar-wrapper">
+        <img src="respaldizafoto.jpg" alt="Ricardo Respaldiza">
+      </div>
+      <div class="logo-title">Ricardo Respaldiza</div>
+      <div class="subtitle">Ceo FlowLite Systems</div>
+    </div>
+
+    <!-- BOTÓN 1: CONTACTO PERSONAL -->
+    <button onclick="downloadVCard()" class="btn-link btn-vcard">
+      <i class="fa-solid fa-address-book"></i> Contacto Personal
+    </button>
+
+    <!-- BOTÓN 2: WHATSAPP FLOWLITE -->
+    <a href="https://wa.me/51920832884" target="_blank" class="btn-link">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp Flowlite
+    </a>
+
+    <!-- BOTÓN 3: ABRE DENTRO DEL MISMO ENTORNO (CASILLEROS) -->
+    <button onclick="toggleServices()" class="btn-link">
+      <i class="fa-solid fa-layer-group"></i> Servicios Flowlite
+    </button>
+
+    <!-- CONTENEDOR DE LOS 2 CASILLEROS INTERNOS -->
+    <div class="expandable-section" id="servicesSection">
+      <button onclick="toggleServices()" class="close-sub-btn"><i class="fa-solid fa-xmark"></i> Cerrar Info</button>
+      
+      <!-- Casillero 3.1: Ventalista -->
+      <div class="info-card" style="min-width: 100%; max-width: 100%; margin-bottom: 12px; text-align: center;">
+        <h4 style="font-size: 14px;">Ventalista</h4>
+        <p style="font-size: 11px; margin-bottom: 8px;">Catálogo digital interconectado con WhatsApp y carrito de pedidos.</p>
+        <a href="https://www.ventalista.lat" target="_blank" style="color: #38bdf8; font-size: 11px; font-weight: 600; text-decoration: none;">Visitar www.ventalista.lat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 9px;"></i></a>
+      </div>
+
+      <!-- Casillero 3.2: Signia Card -->
+      <div class="info-card" style="min-width: 100%; max-width: 100%; text-align: center;">
+        <h4 style="font-size: 14px;">Signia Card</h4>
+        <p style="font-size: 11px; margin-bottom: 8px;">Tarjetas inteligentes NFC para compartir contacto y redes al instante.</p>
+        <a href="https://www.flowlite.lat" target="_blank" style="color: #38bdf8; font-size: 11px; font-weight: 600; text-decoration: none;">Visitar www.flowlite.lat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 9px;"></i></a>
+      </div>
+    </div>
+
+    <!-- SECCIÓN DE DESTACADOS CON LAS 3 FOTOS ESPECIFICADAS -->
+    <div class="section-title">Destacados</div>
+    <div class="info-scroll-container" id="autoScrollContainer">
+      
+      <div class="info-card">
+        <img src="respaldizaflowlite.jpg" alt="Flowlite">
+        <h4>Flowlite</h4>
+        <p>Soluciones digitales avanzadas para empresas y negocios.</p>
+      </div>
+
+      <div class="info-card">
+        <img src="respaldizaventalista.jpg" alt="Ventalista">
+        <h4>Ventalista</h4>
+        <p>Catálogo digital y carrito de pedidos directo a WhatsApp.</p>
+      </div>
+
+      <div class="info-card">
+        <img src="respaldizasignia.jpg" alt="Signia Card">
+        <h4>Signia Card</h4>
+        <p>Tarjetas inteligentes NFC de alto impacto profesional.</p>
+      </div>
+
+    </div>
+
+    <!-- REDES SOCIALES (Actualizadas con Ventalista) -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com/ventalista.lat" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/venta_lista" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@ventalista.lat" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <div class="steps-footer">
+      <div>PASO 1<br>Toma tu Tarjeta</div>
+      <div>PASO 2<br>Acércala al celular</div>
+      <div>PASO 3<br>Comparte tu mundo</div>
+    </div>
+
+  </div>
+
+  <script>
+    // 1. Control del despliegue interno del Botón 3
+    function toggleServices() {
+      const section = document.getElementById('servicesSection');
+      section.classList.toggle('active');
+    }
+
+    // 2. Generador y descargador de vCard Nativo con los datos de Ricardo Respaldiza
+    function downloadVCard() {
+      const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Ricardo Respaldiza
+ORG:FlowLite Systems
+TITLE:Ceo FlowLite Systems
+TEL;TYPE=CELL,VOICE:+51913644516
+URL:https://www.flowlite.lat
+NOTE:Ceo & Fundador en FlowLite Systems. Soluciones Digitales Avanzadas.
+END:VCARD`;
+
+      const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Ricardo_Respaldiza_Flowlite.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // 3. Autorrotación inteligente del carrusel de destacados
+    const container = document.getElementById('autoScrollContainer');
+    const scrollAmount = 172; 
+    const delay = 2500; 
+    let autoScrollInterval;
+
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }, delay);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScrollInterval);
+    }
+
+    startAutoScroll();
+
+    container.addEventListener('mouseenter', stopAutoScroll);
+    container.addEventListener('mouseleave', startAutoScroll);
+    container.addEventListener('touchstart', stopAutoScroll);
+    container.addEventListener('touchend', startAutoScroll);
+  </script>
+
+</body>
+</html>
